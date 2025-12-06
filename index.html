@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <title>De filosoof der geschenken</title>
+
+  <!-- Elegante serif voor de tekst -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    @page {
+      size: A4;
+      margin: 2.5cm;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Cormorant Garamond", "Garamond", "Georgia", "Times New Roman", serif;
+      color: #2b241f;
+      background-color: #f5e4c9; /* zachte basisachtergrond */
+      position: relative;
+    }
+
+    /* FULL SCREEN luipaardachtergrond met lage opacity */
+    .bg-leopard {
+      position: fixed;
+      inset: 0;
+      background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/a5/Leopard%27s_rosettes.jpg");
+      background-size: cover;         /* full screen */
+      background-repeat: no-repeat;
+      background-position: center center;
+      opacity: 0.22;                  /* zachter gemaakt */
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 40px 0;
+      position: relative;
+      z-index: 1; /* boven de achtergrond */
+    }
+
+    .frame {
+      background: rgba(252, 248, 240, 0.96);
+      max-width: 460px;          /* 550px max width */
+      width: 100%;
+      padding: 34px 40px 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 0 1px rgba(179, 152, 120, 0.95), 0 0 28px rgba(0, 0, 0, 0.35);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Sierlijke dubbele rand */
+    .frame::before {
+      content: "";
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(181, 156, 126, 0.95);
+      pointer-events: none;
+    }
+
+    .frame::after {
+      content: "";
+      position: absolute;
+      top: 26px;
+      left: 26px;
+      right: 26px;
+      bottom: 26px;
+      border-radius: 14px;
+      border: 1px dotted rgba(190, 164, 132, 0.8);
+      pointer-events: none;
+    }
+
+    /* Kleine hoekornamenten */
+    .corner {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid rgba(172, 144, 111, 0.85);
+      pointer-events: none;
+      z-index: 0;
+      background: transparent;
+    }
+
+    .corner-tl {
+      top: 20px;
+      left: 22px;
+      border-bottom: none;
+      border-right: none;
+    }
+
+    .corner-tr {
+      top: 20px;
+      right: 22px;
+      border-bottom: none;
+      border-left: none;
+    }
+
+    .corner-bl {
+      bottom: 20px;
+      left: 22px;
+      border-top: none;
+      border-right: none;
+    }
+
+    .corner-br {
+      bottom: 20px;
+      right: 22px;
+      border-top: none;
+      border-left: none;
+    }
+
+    .header,
+    .poem,
+    .signature {
+      position: relative;
+      z-index: 1;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .title-script {
+      font-family: "Great Vibes", "Lucida Handwriting", cursive;
+      font-size: 30px;
+      line-height: 1.2;
+      margin-bottom: 2px;
+      color: #5c4330;
+      margin-top: 20px;
+    }
+
+    .title-main {
+      font-size: 14px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-top: 2px;
+      margin-bottom: 4px;
+      color: #3b3025;
+    }
+
+    .subtitle {
+      font-size: 10px;
+      font-style: italic;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #7b6540;
+    }
+
+    .divider {
+      margin-top: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #b79a73;
+      font-size: 9.5px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+    }
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #c8b49a, transparent);
+      max-width: 120px;
+    }
+
+    .poem {
+      font-size: 11pt;
+      line-height: 1.5;
+    }
+
+    .poem p {
+      margin: 0 0 10px 0;
+    }
+
+    .poem strong {
+      font-weight: 600;
+    }
+
+    .signature {
+      margin-top: 20px;
+      text-align: right;
+      font-size: 9pt;
+      color: #7c6f60;
+      font-style: italic;
+    }
+
+    @media print {
+      body {
+        /* zet 'achtergrondafbeeldingen afdrukken' aan als je de luipaardprint wilt zien */
+      }
+
+      .bg-leopard {
+        opacity: 0.18; /* iets zachter op print */
+      }
+
+      .frame {
+        box-shadow: 0 0 0 1px rgba(179, 152, 120, 0.8);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-leopard"></div>
+
+  <div class="page">
+    <div class="frame">
+      <!-- Sierlijke hoekjes -->
+      <div class="corner corner-tl"></div>
+      <div class="corner corner-tr"></div>
+      <div class="corner corner-bl"></div>
+      <div class="corner corner-br"></div>
+
+      <div class="header">
+        <div class="title-script">De filosoof der geschenken</div>
+        <div class="title-main">Poëtische dedicatie</div>
+        <div class="subtitle">een ode in geur, inzicht en inspiratie</div>
+
+        <div class="divider">
+          <div class="divider-line"></div>
+          <div>∗</div>
+          <div class="divider-line"></div>
+        </div>
+      </div>
+
+      <div class="poem">
+        <p>
+          De filosoof der geschenken hoorde verhalen over jouw academische <strong>aspiratie</strong>, 
+          dat jij in de noordelijke universiteitsmetropool studeert met diepe <strong>concentratie</strong>. 
+          Waar literatuur en kunst elkaar vinden in discursieve <strong>exploratie</strong>, 
+          en woorden zich ontvouwen in semiotische <strong>constellatie</strong>.
+        </p>
+
+        <p>
+          Je analyseert teksten met bijna rituele <strong>deliberatie</strong>, 
+          waar liminaliteit en ambiguïteit rijmen op transdisciplinaire <strong>observatie</strong>. 
+          Je creëert werelden vol idiosyncratische <strong>articulatie</strong>, 
+          waar kleur en vorm botsen in harmonische <strong>contemplatie</strong>.
+        </p>
+
+        <p>
+          Maar Onno, zelfs een kunstenaar met analytische <strong>intensiteit</strong>, 
+          heeft soms inspiratie nodig uit tastbare <strong>materialiteit</strong>. 
+          En dus dacht de filosoof der geschenken in een epistemologische <strong>speculatie</strong>, 
+          dat smaken en aroma’s leiden tot transculturele <strong>creatie</strong>.
+        </p>
+
+        <p>
+          Professor van esthetische epistemologie en transdisciplinaire <strong>pedagogie</strong>, 
+          wist dat Indiase kruiden verrijken geest en <strong>energie</strong>. 
+          Daarom vind je in dit pakketje geen penseel of <strong>papier</strong>, 
+          maar masala saffraan en kardemom vol sensorisch <strong>plezier</strong>.
+        </p>
+
+        <p>
+          Misschien ontdek je in komijn, fenegriek of kurkuma <strong>verborgen</strong>, 
+          een inspiratie die kunst en cultuur zal versterken <strong>morgen</strong>. 
+          Want wie zegt dat meesterwerken enkel uit verf kunnen <strong>resoneren</strong>? 
+          Soms begint creatie juist wanneer zintuigen <strong>experimenteren</strong>.
+        </p>
+
+        <p>
+          Dus proef, experimenteer, laat aroma’s je intellect <strong>intrigereren</strong>, 
+          en wie weet zal jouw kunst via nieuwe culturen <strong>floreren</strong>.
+        </p>
+      </div>
+
+      <div class="signature">
+        Met waardering voor jouw kunstzinnige en academische reis.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
