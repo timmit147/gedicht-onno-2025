@@ -18,19 +18,18 @@
       padding: 0;
       font-family: "Cormorant Garamond", "Garamond", "Georgia", "Times New Roman", serif;
       color: #2b241f;
-      background-color: #f5e4c9; /* zachte basisachtergrond */
+      background-color: #f5e4c9;
       position: relative;
     }
 
-    /* FULL SCREEN luipaardachtergrond met lage opacity */
     .bg-leopard {
       position: fixed;
       inset: 0;
       background-image: url("https://upload.wikimedia.org/wikipedia/commons/a/a5/Leopard%27s_rosettes.jpg");
-      background-size: cover;         /* full screen */
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: center center;
-      opacity: 0.22;                  /* zachter gemaakt */
+      opacity: 0.22;
       z-index: 0;
       pointer-events: none;
     }
@@ -42,12 +41,12 @@
       justify-content: center;
       padding: 40px 0;
       position: relative;
-      z-index: 1; /* boven de achtergrond */
+      z-index: 1;
     }
 
     .frame {
       background: rgba(252, 248, 240, 0.96);
-      max-width: 460px;          /* 550px max width */
+      max-width: 460px;
       width: 100%;
       padding: 34px 40px 30px;
       border-radius: 10px;
@@ -56,7 +55,6 @@
       overflow: hidden;
     }
 
-    /* Sierlijke dubbele rand */
     .frame::before {
       content: "";
       position: absolute;
@@ -81,7 +79,6 @@
       pointer-events: none;
     }
 
-    /* Kleine hoekornamenten */
     .corner {
       position: absolute;
       width: 24px;
@@ -93,45 +90,13 @@
       background: transparent;
     }
 
-    .corner-tl {
-      top: 20px;
-      left: 22px;
-      border-bottom: none;
-      border-right: none;
-    }
+    .corner-tl { top: 20px; left: 22px; border-bottom: none; border-right: none; }
+    .corner-tr { top: 20px; right: 22px; border-bottom: none; border-left: none; }
+    .corner-bl { bottom: 20px; left: 22px; border-top: none; border-right: none; }
+    .corner-br { bottom: 20px; right: 22px; border-top: none; border-left: none; }
 
-    .corner-tr {
-      top: 20px;
-      right: 22px;
-      border-bottom: none;
-      border-left: none;
-    }
-
-    .corner-bl {
-      bottom: 20px;
-      left: 22px;
-      border-top: none;
-      border-right: none;
-    }
-
-    .corner-br {
-      bottom: 20px;
-      right: 22px;
-      border-top: none;
-      border-left: none;
-    }
-
-    .header,
-    .poem,
-    .signature {
-      position: relative;
-      z-index: 1;
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 16px;
-    }
+    .header, .poem, .signature { position: relative; z-index: 1; }
+    .header { text-align: center; margin-bottom: 16px; }
 
     .title-script {
       font-family: "Great Vibes", "Lucida Handwriting", cursive;
@@ -179,39 +144,22 @@
       max-width: 120px;
     }
 
-    .poem {
-      font-size: 11pt;
-      line-height: 1.5;
-    }
+    .poem { font-size: 11pt; line-height: 1.5; }
+    .poem p { margin: 0 0 10px 0; }
+    .poem strong { font-weight: 600; }
 
-    .poem p {
-      margin: 0 0 10px 0;
-    }
+    .signature { margin-top: 20px; text-align: right; font-size: 9pt; color: #7c6f60; font-style: italic; }
 
-    .poem strong {
-      font-weight: 600;
-    }
-
-    .signature {
-      margin-top: 20px;
-      text-align: right;
-      font-size: 9pt;
-      color: #7c6f60;
-      font-style: italic;
+    /* Tooltip styling */
+    span[title] {
+      border-bottom: 1px dotted #7b6540;
+      cursor: help;
+      position: relative;
     }
 
     @media print {
-      body {
-        /* zet 'achtergrondafbeeldingen afdrukken' aan als je de luipaardprint wilt zien */
-      }
-
-      .bg-leopard {
-        opacity: 0.18; /* iets zachter op print */
-      }
-
-      .frame {
-        box-shadow: 0 0 0 1px rgba(179, 152, 120, 0.8);
-      }
+      .bg-leopard { opacity: 0.18; }
+      .frame { box-shadow: 0 0 0 1px rgba(179, 152, 120, 0.8); }
     }
   </style>
 </head>
@@ -220,7 +168,6 @@
 
   <div class="page">
     <div class="frame">
-      <!-- Sierlijke hoekjes -->
       <div class="corner corner-tl"></div>
       <div class="corner corner-tr"></div>
       <div class="corner corner-bl"></div>
@@ -230,7 +177,6 @@
         <div class="title-script">De filosoof der geschenken</div>
         <div class="title-main">Poëtische dedicatie</div>
         <div class="subtitle">een ode in geur, inzicht en inspiratie</div>
-
         <div class="divider">
           <div class="divider-line"></div>
           <div>∗</div>
@@ -240,43 +186,65 @@
 
       <div class="poem">
         <p>
-          De filosoof der geschenken hoorde verhalen over jouw academische <strong>aspiratie</strong>, 
-          dat jij in de noordelijke universiteitsmetropool studeert met diepe <strong>concentratie</strong>. 
-          Waar literatuur en kunst elkaar vinden in discursieve <strong>exploratie</strong>, 
-          en woorden zich ontvouwen in semiotische <strong>constellatie</strong>.
+          De filosoof der geschenken hoorde verhalen over jouw academische 
+          <span title="Je ambitie of wens om iets te bereiken in je studie of academische carrière">aspiratie</span>, 
+          dat jij in de noordelijke universiteitsmetropool studeert met diepe 
+          <span title="Sterke focus of aandacht bij het studeren of werken">concentratie</span>. 
+          Waar literatuur en kunst elkaar vinden in discursieve 
+          <span title="Onderzoek of analyse via gesprekken, teksten of argumenten">exploratie</span>, 
+          en woorden zich ontvouwen in semiotische 
+          <span title="Hoe woorden en symbolen samen een betekenisvol patroon vormen">constellatie</span>.
         </p>
 
         <p>
-          Je analyseert teksten met bijna rituele <strong>deliberatie</strong>, 
-          waar liminaliteit en ambiguïteit rijmen op transdisciplinaire <strong>observatie</strong>. 
-          Je creëert werelden vol idiosyncratische <strong>articulatie</strong>, 
-          waar kleur en vorm botsen in harmonische <strong>contemplatie</strong>.
+          Je analyseert teksten met bijna rituele 
+          <span title="Het systematisch en met aandacht nadenken over iets, bijna ceremonieel">deliberatie</span>, 
+          waar <span title="Een overgangsfase, iets dat tussen twee staten of werelden in zit">liminaliteit</span> en ambiguïteit rijmen op transdisciplinaire 
+          <span title="Het bekijken of onderzoeken van iets vanuit verschillende vakgebieden tegelijk">observatie</span>. 
+          Je creëert werelden vol idiosyncratische 
+          <span title="Een unieke of persoonlijke manier van expressie">articulatie</span>, 
+          waar kleur en vorm botsen in harmonische 
+          <span title="Diep nadenken of beschouwen">contemplatie</span>.
         </p>
 
         <p>
-          Maar Onno, zelfs een kunstenaar met analytische <strong>intensiteit</strong>, 
-          heeft soms inspiratie nodig uit tastbare <strong>materialiteit</strong>. 
-          En dus dacht de filosoof der geschenken in een epistemologische <strong>speculatie</strong>, 
-          dat smaken en aroma’s leiden tot transculturele <strong>creatie</strong>.
+          Maar Onno, zelfs een kunstenaar met analytische 
+          <span title="Sterke mate van aandacht en intensiteit in denken of werken">intensiteit</span>, 
+          heeft soms inspiratie nodig uit tastbare 
+          <span title="Het fysieke, voelbare aspect van iets">materialiteit</span>. 
+          En dus dacht de filosoof der geschenken in een epistemologische 
+          <span title="Nadenken over kennis of over hoe we dingen begrijpen">speculatie</span>, 
+          dat smaken en aroma’s leiden tot transculturele 
+          <span title="Creatief werk dat verschillende culturele invloeden combineert">creatie</span>.
         </p>
 
         <p>
-          Professor van esthetische epistemologie en transdisciplinaire <strong>pedagogie</strong>, 
-          wist dat Indiase kruiden verrijken geest en <strong>energie</strong>. 
-          Daarom vind je in dit pakketje geen penseel of <strong>papier</strong>, 
-          maar masala saffraan en kardemom vol sensorisch <strong>plezier</strong>.
+          Professor van esthetische epistemologie en transdisciplinaire 
+          <span title="Onderwijs en leerprincipes over meerdere vakgebieden">pedagogie</span>, 
+          wist dat Indiase kruiden verrijken geest en 
+          <span title="Levensenergie, kracht en vitaliteit">energie</span>. 
+          Daarom vind je in dit pakketje geen penseel of 
+          <span title="Papier, materiaal om op te schrijven of tekenen">papier</span>, 
+          maar masala saffraan en kardemom vol sensorisch 
+          <span title="Genot dat via de zintuigen komt (zien, horen, ruiken, proeven, voelen)">plezier</span>.
         </p>
 
         <p>
-          Misschien ontdek je in komijn, fenegriek of kurkuma <strong>verborgen</strong>, 
-          een inspiratie die kunst en cultuur zal versterken <strong>morgen</strong>. 
-          Want wie zegt dat meesterwerken enkel uit verf kunnen <strong>resoneren</strong>? 
-          Soms begint creatie juist wanneer zintuigen <strong>experimenteren</strong>.
+          Misschien ontdek je in komijn, fenegriek of kurkuma 
+          <span title="Verborgen, niet direct zichtbaar of bekend">verborgen</span>, 
+          een inspiratie die kunst en cultuur zal versterken 
+          <span title="Morgen, in de toekomst">morgen</span>. 
+          Want wie zegt dat meesterwerken enkel uit verf kunnen 
+          <span title="Weerklinken, een effect of emotie oproepen">resoneren</span>? 
+          Soms begint creatie juist wanneer zintuigen 
+          <span title="Uitproberen, experimenteren met nieuwe vormen">experimenteren</span>.
         </p>
 
         <p>
-          Dus proef, experimenteer, laat aroma’s je intellect <strong>intrigereren</strong>, 
-          en wie weet zal jouw kunst via nieuwe culturen <strong>floreren</strong>.
+          Dus proef, experimenteer, laat aroma’s je intellect 
+          <span title="Boeien of nieuwsgierigheid opwekken">intrigereren</span>, 
+          en wie weet zal jouw kunst via nieuwe culturen 
+          <span title="Opbloeien, groeien en floreren">floreren</span>.
         </p>
       </div>
 
